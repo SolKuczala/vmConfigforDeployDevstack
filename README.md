@@ -1,0 +1,2 @@
+# vmConfigforDeployDevstack
+personal configuration
