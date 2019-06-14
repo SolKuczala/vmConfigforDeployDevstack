@@ -11,7 +11,21 @@ sudo apt-get -y update
 git clone https://github.com/openstack/devstack.git
 cd devstack
 cp samples/local.conf .
-#tocar el local.conf
-local.conf
-./stack 
+echo "[[local|localrc]]
+
+ADMIN_PASSWORD=nomoresecret
+DATABASE_PASSWORD=stackdb
+RABBIT_PASSWORD=stackqueue
+SERVICE_PASSWORD=$ADMIN_PASSWORD
+LOGFILE=$DEST/logs/stack.sh.log
+LOGDAYS=2
+
+SYSLOG=False
+LOG_COLOR=False
+HOST_IP=127.0.0.1
+
+enable_plugin manila https://opendev.org/openstack/manila
+LIBS_FROM_GIT=python-manilaclient
+" > local.conf
+./stack
 #esperar una hora
